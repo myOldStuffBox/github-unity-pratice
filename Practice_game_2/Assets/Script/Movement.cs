@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.D)) rb.velocity = new Vector2(speed * Time.deltaTime, rb.velocity.y);
         if (Input.GetKey(KeyCode.A)) rb.velocity = new Vector2(-speed * Time.deltaTime, rb.velocity.y);
