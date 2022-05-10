@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6648332033378026481}
   m_Layer: 0
   m_Name: brick
-  m_TagString: Untagged
+  m_TagString: brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,4 +122,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd7b56863fe47994283ebc9558569d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
   brick: {fileID: 6648332033378026477}
