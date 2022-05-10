@@ -19,6 +19,7 @@ public class BallCollision : MonoBehaviour
             rb.velocity = new Vector2(y*platformBounceDis, 1).normalized * speed;
         }
 
+        // ¼²À»¨ì°»´úÀð(§R°£)
         if(collision.gameObject.tag == "Detect_Ground")
         {
             Destroy(rb.gameObject);
