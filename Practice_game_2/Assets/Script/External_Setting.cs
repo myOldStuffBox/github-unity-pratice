@@ -9,7 +9,7 @@ public class External_Setting : MonoBehaviour
     public Rigidbody2D ballRb;
 
     // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         PreventInfinitBouncing();
     }

@@ -1769,6 +1769,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2045145593, guid: b577d37c0342a3142bcdb6e6154eaf8a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045145596, guid: b577d37c0342a3142bcdb6e6154eaf8a, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 709808519748873635, guid: b577d37c0342a3142bcdb6e6154eaf8a, type: 3}
       propertyPath: bricks
       value: 

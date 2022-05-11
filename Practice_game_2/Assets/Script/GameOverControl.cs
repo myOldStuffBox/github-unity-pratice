@@ -8,12 +8,16 @@ public class GameOverControl : MonoBehaviour
     public GameObject winText;      // Win Text
     public GameObject restartBtn;   // 重新開始按鈕
     public GameObject menuBtn;      // 回到 Menu 按鈕
+    public GameObject stopUI;       // 停止時的 UI
 
     public GameObject bricks;       // 磚塊物件
 
-    public bool winGame;            // 是否贏得遊戲
     private int winCondition;       // 贏得遊戲條件
+    public bool winGame;            // 是否贏得遊戲
+    public bool loseGame;           // 是否 Game Over
+    private bool stop;              // 是否暫停遊戲
 
+    // ================================================================================
 
     // Start is called before the first frame update
     void Start()
@@ -23,29 +27,50 @@ public class GameOverControl : MonoBehaviour
         winText.SetActive(false);
         restartBtn.SetActive(false);    
         menuBtn.SetActive(false);
+        stopUI.SetActive(false);
 
         winGame = false;                // 未贏得遊戲
+        loseGame = false;               // 未輸遊戲
+        stop = false;                   // 未暫停遊戲
         winCondition = bricks.transform.childCount; // 計算磚塊總數
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         // 當球被摧毀(且還沒贏得遊戲)，叫出 Game Over Text
-        if (BallCollision.ballDestory && !winGame)
-        {
-            gameoverText.SetActive(true);
-            restartBtn.SetActive(true); // 顯示重新開始按鈕
-            menuBtn.SetActive(true) ;   // 顯示回到 Menu 按鈕
-        }
+        if (BallCollision.ballDestory && !winGame ) LoseGame();
+        // 贏得遊戲 Win Text
+        if (ScoreTextControl.score >= winCondition ) WinGame();
 
-        // 贏得遊戲
-        if (ScoreTextControl.score >= winCondition)
-        {
-            winGame = true;             // 已獲勝
-            winText.SetActive(true);
-            restartBtn.SetActive(true);
-            menuBtn.SetActive(true);
-        }
+
+        // 按下 ESC 暫停遊戲 // 解除暫停
+        if (Input.GetKeyUp(KeyCode.Escape) && !stop) StopGame(true);
+        else if (Input.GetKeyUp(KeyCode.Escape) && stop) StopGame(false);
+    }
+
+
+    // ================================================================================
+    void LoseGame()
+    {
+        loseGame = true;            // 以輸
+        gameoverText.SetActive(true);
+        restartBtn.SetActive(true); // 顯示重新開始按鈕
+        menuBtn.SetActive(true);   // 顯示回到 Menu 按鈕
+    }
+    void WinGame()
+    {
+        winGame = true;             // 已獲勝
+        winText.SetActive(true);
+        restartBtn.SetActive(true);
+        menuBtn.SetActive(true);
+    }
+
+    void StopGame( bool isStop)
+    {
+        if(isStop) Time.timeScale = 0;
+        if (!isStop) Time.timeScale = 1;
+        stopUI.SetActive(isStop);
+        stop = isStop;
     }
 }

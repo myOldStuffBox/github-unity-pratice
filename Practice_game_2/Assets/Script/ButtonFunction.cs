@@ -8,6 +8,7 @@ public class ButtonFunction : MonoBehaviour
     {
         SceneManager.LoadScene(1);
         BallCollision.ballDestory = false;
+        if (Time.timeScale == 0) Time.timeScale = 1;    // 如時間是暫停就重新啟動時間
     }
 
     // 到 Scene 0
@@ -15,6 +16,7 @@ public class ButtonFunction : MonoBehaviour
     {
         SceneManager.LoadScene(0);
         BallCollision.ballDestory = false;
+        if (Time.timeScale == 0) Time.timeScale = 1;    // 如時間是暫停就重新啟動時間
     }
 
     // 結束遊戲
