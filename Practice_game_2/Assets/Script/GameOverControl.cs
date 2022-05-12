@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameOverControl : MonoBehaviour
@@ -11,6 +9,8 @@ public class GameOverControl : MonoBehaviour
     public GameObject stopUI;       // 停止時的 UI
 
     public GameObject bricks;       // 磚塊物件
+    public GameObject gameOverSound;
+    public GameObject winSound;
 
     private int winCondition;       // 贏得遊戲條件
     public bool winGame;            // 是否贏得遊戲
@@ -57,6 +57,7 @@ public class GameOverControl : MonoBehaviour
         gameoverText.SetActive(true);
         restartBtn.SetActive(true); // 顯示重新開始按鈕
         menuBtn.SetActive(true);   // 顯示回到 Menu 按鈕
+        Instantiate(gameOverSound);
     }
     void WinGame()
     {
@@ -64,6 +65,7 @@ public class GameOverControl : MonoBehaviour
         winText.SetActive(true);
         restartBtn.SetActive(true);
         menuBtn.SetActive(true);
+        Instantiate(winSound);
     }
 
     void StopGame( bool isStop)

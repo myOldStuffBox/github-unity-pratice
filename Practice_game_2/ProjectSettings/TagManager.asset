@@ -7,6 +7,8 @@ TagManager:
   - wall
   - Detect_Ground
   - brick
+  - Sound Effect
+  - Background Music
   layers:
   - Default
   - TransparentFX
